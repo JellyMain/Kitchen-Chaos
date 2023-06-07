@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     private Vector3 lastInteractDir;
     private ClearCounter selectedCounter;
 
+
     private void Awake()
     {
         if (Instance != null)
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
         }
         Instance = this;
     }
+
 
     private void Start()
     {
@@ -45,11 +47,13 @@ public class Player : MonoBehaviour
         }
     }
 
+
     private void Update()
     {
         HandleMovement();
         HandleInteraction();
     }
+
 
     private void HandleInteraction()
     {
@@ -81,8 +85,8 @@ public class Player : MonoBehaviour
         {
             SetSelectedCounter(null);
         }
-        Debug.Log(selectedCounter);
     }
+
 
     private void HandleMovement()
     {
@@ -126,6 +130,7 @@ public class Player : MonoBehaviour
 
         transform.forward = Vector3.Slerp(transform.forward, moveDirection, rotateSpeed * Time.deltaTime);
     }
+
 
 
     public bool IsWalking()

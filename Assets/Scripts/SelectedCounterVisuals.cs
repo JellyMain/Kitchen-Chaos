@@ -16,12 +16,22 @@ public class SelectedCounterVisuals : MonoBehaviour
     {
         if (args.selectedCounter == clearCounter)
         {
-            selectedCounterVisuals.SetActive(true);
+            Show();
         }
         else
         {
-            selectedCounterVisuals.SetActive(false);
+            Hide();
         }
     }
 
+    private void Show()
+    {
+        selectedCounterVisuals.SetActive(true);
+    }
+
+
+    private void Hide()
+    {
+        selectedCounterVisuals.SetActive(false);
+    }
 }
