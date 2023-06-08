@@ -2,18 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClearCounter : BaseCounter, IKithenObjectParent
+public class ContainerCounter : BaseCounter, IKithenObjectParent
 {
-
     [SerializeField] Transform counterTopPoint;
-    [SerializeField] ClearCounter secondCounter;
     [SerializeField] KitchenObjectSO kitchenObjectSO;
 
     private KitchenObject kitchenObject;
-
-
-
-
 
     public override void Interact(Player player)
     {

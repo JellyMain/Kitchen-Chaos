@@ -14,7 +14,7 @@ public class SelectedCounterVisuals : MonoBehaviour
 
     private void ChangeCounterVisual(object sender, Player.OnSelectedCounterChangedArgs args)
     {
-        if (args.selectedCounter == clearCounter)
+        if (args.baseCounter == clearCounter)
         {
             Show();
         }
