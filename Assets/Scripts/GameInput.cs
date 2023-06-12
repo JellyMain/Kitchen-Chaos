@@ -8,6 +8,7 @@ public class GameInput : MonoBehaviour
 {
     private PlayerInputActions playerActions;
     public event EventHandler OnInteractAction;
+    public event EventHandler OnAltInteraction;
 
     private void Awake()
     {
@@ -15,6 +16,7 @@ public class GameInput : MonoBehaviour
         playerActions.Player.Enable();
 
         playerActions.Player.Interact.performed += Interact;
+        playerActions.Player.InteractAlternate.performed += AltInteract;
     }
 
 
@@ -22,6 +24,13 @@ public class GameInput : MonoBehaviour
     {
         OnInteractAction?.Invoke(this, EventArgs.Empty);
     }
+
+
+    private void AltInteract(InputAction.CallbackContext obj)
+    {
+        OnAltInteraction?.Invoke(this, EventArgs.Empty);
+    }
+
 
     public Vector2 GetInputNormilized()
     {
