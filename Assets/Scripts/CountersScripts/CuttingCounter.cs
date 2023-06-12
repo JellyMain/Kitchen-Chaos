@@ -11,6 +11,7 @@ public class CuttingCounter : BaseCounter
     {
         public float normalizedProgress;
     }
+    public event EventHandler OnCutting;
 
     [SerializeField] CuttingRecipeSO[] cuttingRecipes;
     private float cuttingProgress;
@@ -26,13 +27,14 @@ public class CuttingCounter : BaseCounter
                 {
                     cuttingProgress = 0;
 
+                    player.GetKitchenObject().SetKitchenObjectParent(this);
+
                     CuttingRecipeSO objetCuttingRecipe = GetCuttingRecipeFromInput(GetKitchenObject().GetKitchenObjectSO());
 
                     OnProgressChanged?.Invoke(this, new OnProgressChangedArgs
                     {
                         normalizedProgress = (float)cuttingProgress / objetCuttingRecipe.cuttingProgressMax
                     });
-                    player.GetKitchenObject().SetKitchenObjectParent(this);
                 }
             }
         }
@@ -56,6 +58,7 @@ public class CuttingCounter : BaseCounter
             {
                 normalizedProgress = (float)cuttingProgress / objetCuttingRecipe.cuttingProgressMax
             });
+            OnCutting?.Invoke(this, EventArgs.Empty);
 
             if (objetCuttingRecipe.cuttingProgressMax <= cuttingProgress)
             {
